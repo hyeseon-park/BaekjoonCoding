@@ -1,7 +1,9 @@
 package sort;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Sort_1181 {
@@ -9,11 +11,12 @@ public class Sort_1181 {
 		Scanner scan = new Scanner(System.in);
 		int n = scan.nextInt();
 		scan.nextLine();
-		String[] arr = new String[n];
+		HashSet<String> set = new HashSet<String>();
 		for(int i=0; i<n; i++) {
-			arr[i] = scan.nextLine();
+			set.add(scan.nextLine());
 		}
-		Arrays.sort(arr, new Comparator<String>() {
+		ArrayList<String> list = new ArrayList<String>(set);
+		Collections.sort(list, new Comparator<String>() {
 			public int compare(String o1, String o2) {
 				if(o1.length() > o2.length()) {
 					return 1; 
@@ -24,12 +27,8 @@ public class Sort_1181 {
 				}
 			}
 		}); 
-		System.out.println(arr[0]);
-		for(int i=1; i<n; i++) {
-			if(arr[i-1].equals(arr[i])) {
-				continue;
-			}
-			System.out.println(arr[i]);
+		for(String s : list) {
+			System.out.println(s);
 		}
 	}
 }
