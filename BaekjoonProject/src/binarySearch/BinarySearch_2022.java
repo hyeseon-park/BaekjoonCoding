@@ -11,13 +11,14 @@ public class BinarySearch_2022 {
 		x = scan.nextDouble();
 		y = scan.nextDouble();
 		c = scan.nextDouble();
+		scan.close();
 		if(x<y) {
 			double tmp = x;
 			x = y;
 			y = tmp;
-		} //x>y
+		}
 		double l = 0; //최소값
-		double r = y; //최대값 x>y>d
+		double r = y; //최대값
 		while(true) { //binary search
 			double d = (l+r)/2; //중간값
 			double tmpC = binarySearch(d);
