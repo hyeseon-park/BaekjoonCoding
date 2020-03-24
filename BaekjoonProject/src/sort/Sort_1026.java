@@ -9,17 +9,19 @@ public class Sort_1026 {
 		int n = scan.nextInt();
 		int[] arrA = new int[n];
 		int[] arrB = new int[n];
-		for(int i=0; i<n; i++) {
+		for (int i = 0; i < n; i++) {
 			arrA[i] = scan.nextInt();
 		}
-		for(int i=0; i<n; i++) {
+		for (int i = 0; i < n; i++) {
 			arrB[i] = scan.nextInt();
 		}
+		scan.close();
+
 		Arrays.sort(arrA);
 		Arrays.sort(arrB);
 		int sum = 0;
-		for(int i=0; i<n; i++) {
-			sum += arrA[i]*arrB[n-i-1];
+		for (int i = 0; i < n; i++) {
+			sum += arrA[i] * arrB[n - i - 1];
 		}
 		System.out.println(sum);
 	}
