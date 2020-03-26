@@ -9,14 +9,18 @@ import java.util.Scanner;
 public class Sort_1181 {
 	public static void main(String[] args) throws Exception {
 		Scanner scan = new Scanner(System.in);
+		HashSet<String> words = new HashSet<String>();
+		ArrayList<String> wordList;
+		
 		int n = scan.nextInt();
 		scan.nextLine();
-		HashSet<String> set = new HashSet<String>();
 		for(int i=0; i<n; i++) {
-			set.add(scan.nextLine());
+			words.add(scan.nextLine());
 		}
-		ArrayList<String> list = new ArrayList<String>(set);
-		Collections.sort(list, new Comparator<String>() {
+		scan.close();
+		wordList = new ArrayList<String>(words);
+
+		Collections.sort(wordList, new Comparator<String>() {
 			public int compare(String o1, String o2) {
 				if(o1.length() > o2.length()) {
 					return 1; 
@@ -27,8 +31,9 @@ public class Sort_1181 {
 				}
 			}
 		}); 
-		for(String s : list) {
-			System.out.println(s);
+		
+		for(String word : wordList) {
+			System.out.println(word);
 		}
 	}
 }
