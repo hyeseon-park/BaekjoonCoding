@@ -3,38 +3,36 @@ package bruteForce;
 import java.util.Scanner;
 
 public class BruteForce_1018 {
-	static String[] chessBoard = {"WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", 
-			"WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW"};
-	static String[] strArr;
-	static int n, m, count, tmpCount;
-	
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		count = Integer.MAX_VALUE;
-		n = scan.nextInt(); //10
-		m = scan.nextInt(); //13
+		
+		String[] chessBoard = { "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW" };
+		int minimumCount = Integer.MAX_VALUE;
+		int n = scan.nextInt();
+		int m = scan.nextInt();
 		scan.nextLine();
-		String[] strArr = new String[n];
-		for(int i=0; i<n; i++) {
-			strArr[i] = scan.nextLine();
+		String[] board = new String[n];
+		for (int i = 0; i < n; i++) {
+			board[i] = scan.nextLine();
 		}
-		for(int i=0; i<=n-8; i++) { //0~2
-			for(int j=0; j<=m-8; j++) { //0~5
-				tmpCount = 0;
-				for(int k=0; k<8; k++) {
-					String tmpStr = strArr[i+k].substring(j, j+8);
-					for(int l=0; l<8; l++) {
-						if(tmpStr.charAt(l) == chessBoard[k].charAt(l)) {
-							tmpCount++;
+		scan.close();
+		
+		for (int i = 0; i <= n - 8; i++) {
+			for (int j = 0; j <= m - 8; j++) {
+				int count = 0;
+				for (int k = 0; k < 8; k++) {
+					String oneLine = board[i + k].substring(j, j + 8);
+					for (int l = 0; l < 8; l++) {
+						if (oneLine.charAt(l) == chessBoard[k].charAt(l)) {
+							count++;
 						}
 					}
 				}
-				if(tmpCount >= 32) {
-					tmpCount = 64 - tmpCount;
-				}
-				count = Math.min(count, tmpCount);
+				if (count >= 32) count = 64 - count;
+				minimumCount = Math.min(minimumCount, count);
 			}
 		}
-		System.out.println(count);
+		
+		System.out.println(minimumCount);
 	}
 }
