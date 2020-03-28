@@ -7,6 +7,7 @@ public class Math_1008 {
 		Scanner scan = new Scanner(System.in);
 		long a = scan.nextInt();
 		long b = scan.nextInt();
+		scan.close();
 		System.out.println(a/(double)b);
 	}
 }
