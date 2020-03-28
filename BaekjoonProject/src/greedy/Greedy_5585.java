@@ -2,30 +2,34 @@ package greedy;
 
 import java.util.Scanner;
 
-public class Greedy_5585 { //거스름돈
+public class Greedy_5585 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
+
 		int count = 0;
-		int n = scan.nextInt();
-		n = 1000-n;
-		
-		count += n/500;
-		n = n%500;
-		
-		count += n/100;
-		n = n%100;
-		
-		count += n/50;
-		n = n%50;
-		
-		count += n/10;
-		n = n%10;
-		
-		count += n/5;
-		n = n%5;
-		
-		count += n/1;
-		n = n%1;
+		int money = scan.nextInt();
+		scan.close();
+
+		money = 1000 - money;
+
+		count += money / 500;
+		money = money % 500;
+
+		count += money / 100;
+		money = money % 100;
+
+		count += money / 50;
+		money = money % 50;
+
+		count += money / 10;
+		money = money % 10;
+
+		count += money / 5;
+		money = money % 5;
+
+		count += money / 1;
+		money = money % 1;
+
 		System.out.println(count);
 	}
 }
