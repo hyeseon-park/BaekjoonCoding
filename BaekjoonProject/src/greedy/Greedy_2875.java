@@ -2,22 +2,23 @@ package greedy;
 
 import java.util.Scanner;
 
-public class Greedy_2875 { //30
+public class Greedy_2875 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		int n = scan.nextInt(); //여
-		int m = scan.nextInt(); //남
-		int k = scan.nextInt(); //인턴
-		int max = 0;
-		for(int i=0; i<=m; i++) { //0~3
-			int tmpN = n - i*2; //6-4 =0
-			if(tmpN+(m-i)>=k && tmpN>=0) {
-				max = i;
+
+		int girl = scan.nextInt();
+		int boy = scan.nextInt();
+		int internship = scan.nextInt();
+		scan.close();
+
+		int team = 0;
+		for (int i = 0; i <= boy; i++) {
+			int left = girl - i * 2;
+			if (left + (boy - i) >= internship && left >= 0) {
+				team = i;
 			}
 		}
-		System.out.println(max);
+
+		System.out.println(team);
 	}
 }
-
-// 6 3 2
-// 3 6 2
