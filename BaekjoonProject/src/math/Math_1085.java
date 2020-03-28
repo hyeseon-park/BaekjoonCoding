@@ -5,23 +5,27 @@ import java.util.Scanner;
 public class Math_1085 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		int min = 1000;
+		
+		int minimum = 1000;
 		int x = scan.nextInt();
 		int y = scan.nextInt();
 		int w = scan.nextInt();
 		int h = scan.nextInt();
-		if(x<min) {
-			min=x;
+		scan.close();
+
+		if (x < minimum) {
+			minimum = x;
 		}
-		if(y<min) {
-			min=y;
+		if (y < minimum) {
+			minimum = y;
 		}
-		if(w-x<min) {
-			min=w-x;
+		if (w - x < minimum) {
+			minimum = w - x;
 		}
-		if(h-y<min) {
-			min=h-y;
+		if (h - y < minimum) {
+			minimum = h - y;
 		}
-		System.out.println(min);
+		
+		System.out.println(minimum);
 	}
 }
