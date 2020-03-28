@@ -7,6 +7,7 @@ public class Math_1001 {
 		Scanner scan = new Scanner(System.in);
 		int a = scan.nextInt();
 		int b = scan.nextInt();
-		System.out.println(a+b);
+		scan.close();
+		System.out.println(a-b);
 	}
 }
