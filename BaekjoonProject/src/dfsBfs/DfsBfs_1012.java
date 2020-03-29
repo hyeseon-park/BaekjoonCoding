@@ -3,44 +3,49 @@ package dfsBfs;
 import java.util.Scanner;
 
 public class DfsBfs_1012 {
-	static int[] dx = {1, -1, 0, 0};
-	static int[] dy = {0, 0, 1, -1};
-	static int m, n, k;
+	static int m, n, cabbage;
 	static int[][] farm;
-	
+	static int[] dx = { 1, -1, 0, 0 };
+	static int[] dy = { 0, 0, 1, -1 };
+
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		int t = scan.nextInt(); //테스트 케이스 개수
-		for(int i=0; i<t; i++) {			
-			m = scan.nextInt(); //가로
-			n = scan.nextInt(); //세로
-			k = scan.nextInt(); //위치 개수
+
+		int testCase = scan.nextInt();
+		for (int i = 0; i < testCase; i++) {
+			int worm = 0;
+			m = scan.nextInt();
+			n = scan.nextInt();
+			cabbage = scan.nextInt();
 			farm = new int[n][m];
-			scan.nextLine();
-			for(int j=0; j<k; j++) {
-				int tmpM = scan.nextInt(); //가로
-				int tmpN = scan.nextInt(); //세로
-				farm[tmpN][tmpM] = 1;
+			for (int j = 0; j < cabbage; j++) {
+				int cabbageM = scan.nextInt();
+				int cabbageN = scan.nextInt();
+				farm[cabbageN][cabbageM] = 1;
 			}
-			int count = 0;
-			for(int j=0; j<n; j++) { //세로
-				for(int l=0; l<m; l++) { //가로
-					if(farm[j][l]==1) {
-						count++;
+
+			for (int j = 0; j < n; j++) {
+				for (int l = 0; l < m; l++) {
+					if (farm[j][l] == 1) {
+						worm++;
 						dfs(j, l);
 					}
 				}
 			}
-			System.out.println(count);
+			System.out.println(worm);
 		}
+		scan.close();
 	}
+
 	static void dfs(int x, int y) {
-		farm[x][y] = 0; //0으로 바꾸기
-		for(int i=0; i<4; i++) {			
-			int nx = dx[i]+x; //세로
-			int ny = dy[i]+y; //가로
-			if(nx>=0 && nx<n && ny>=0 && ny<m) {				
-				if(farm[nx][ny] == 1) {
+		farm[x][y] = 0;
+
+		for (int i = 0; i < 4; i++) {
+			int nx = dx[i] + x;
+			int ny = dy[i] + y;
+
+			if (nx >= 0 && nx < n && ny >= 0 && ny < m) {
+				if (farm[nx][ny] == 1) {
 					dfs(nx, ny);
 				}
 			}
