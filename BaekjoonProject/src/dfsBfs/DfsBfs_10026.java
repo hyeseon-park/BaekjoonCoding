@@ -3,46 +3,50 @@ package dfsBfs;
 import java.util.Scanner;
 
 public class DfsBfs_10026 {
-	static int[] dx = {1, -1, 0, 0};
-	static int[] dy = {0, 0, 1, -1};
 	static int n;
 	static String[][] grid;
 	static boolean[][] visit;
-	
+	static int[] dx = { 1, -1, 0, 0 };
+	static int[] dy = { 0, 0, 1, -1 };
+
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
+
+		int area = 0;
 		n = scan.nextInt();
 		scan.nextLine();
-		grid = new String[n][n];
 		visit = new boolean[n][n];
-		for(int i=0; i<n; i++) {
-			String s = scan.nextLine();
-			for(int j=0; j<n; j++) {
-				grid[i][j] = String.valueOf(s.charAt(j));
+		grid = new String[n][n];
+		for (int i = 0; i < n; i++) {
+			String str = scan.nextLine();
+			for (int j = 0; j < n; j++) {
+				grid[i][j] = String.valueOf(str.charAt(j));
 			}
 		}
-		int area = 0;
-		for(int i=0; i<n; i++) {
-			for(int j=0; j<n; j++) {
-				if(!visit[i][j]) {
+		scan.close();
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if (!visit[i][j]) {
 					area++;
 					dfs(i, j);
 				}
 			}
 		}
 		System.out.println(area);
-		for(int i=0; i<grid.length; i++) {
-			for(int j=0; j<grid.length; j++) {				
-				if(grid[i][j].equals("G")) {
+		
+		area = 0;
+		visit = new boolean[n][n];
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if (grid[i][j].equals("G")) {
 					grid[i][j] = "R";
 				}
 			}
 		}
-		visit = new boolean[n][n];
-		area = 0;
-		for(int i=0; i<n; i++) {
-			for(int j=0; j<n; j++) {
-				if(!visit[i][j]) {
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if (!visit[i][j]) {
 					area++;
 					dfs(i, j);
 				}
@@ -50,18 +54,18 @@ public class DfsBfs_10026 {
 		}
 		System.out.println(area);
 	}
+
 	static void dfs(int x, int y) {
 		visit[x][y] = true;
-		String color = grid[x][y];
-		for(int i=0; i<4; i++) {
-			int nx = x + dx[i]; 
-			int ny = y + dy[i]; 
-			if(nx>=0 && ny>=0 && nx<n && ny<n) {
-				if(grid[nx][ny].equals(color) && visit[nx][ny]==false) {
-					visit[nx][ny] = true;
+		
+		for (int i = 0; i < 4; i++) {
+			int nx = x + dx[i];
+			int ny = y + dy[i];
+			if (nx >= 0 && nx < n && ny >= 0 && ny < n) {
+				if (grid[nx][ny].equals(grid[x][y]) && visit[nx][ny] == false) {
 					dfs(nx, ny);
 				}
 			}
 		}
-	}	
+	}
 }
