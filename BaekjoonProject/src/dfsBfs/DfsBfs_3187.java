@@ -39,15 +39,15 @@ public class DfsBfs_3187 {
 	}
 
 	static void bfs(int x, int y) {
-		Queue<Dot> q = new LinkedList<Dot>();
+		Queue<Dot2> q = new LinkedList<Dot2>();
 		int sheepInFence = 0;
 		int wolfInFence = 0;
 
 		visited[x][y] = true;
-		q.add(new Dot(x, y));
+		q.add(new Dot2(x, y));
 
 		while (!q.isEmpty()) {
-			Dot now = q.poll();
+			Dot2 now = q.poll();
 			if (area[now.x][now.y] == 'k')
 				sheepInFence++;
 			if (area[now.x][now.y] == 'v')
@@ -60,7 +60,7 @@ public class DfsBfs_3187 {
 					continue;
 				}
 				visited[nx][ny] = true;
-				q.add(new Dot(nx, ny));
+				q.add(new Dot2(nx, ny));
 			}
 		}
 
@@ -79,11 +79,11 @@ public class DfsBfs_3187 {
 	}
 }
 
-class Dot {
+class Dot2 {
 	int x;
 	int y;
 
-	Dot(int x, int y) {
+	Dot2(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
