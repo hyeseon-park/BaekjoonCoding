@@ -26,6 +26,7 @@ public class Backtracking_15649 {
 				System.out.print(numbers[i] + " ");
 			}
 			System.out.println();
+			return;
 		}
 
 		for (int i = 1; i <= n; i++) {
